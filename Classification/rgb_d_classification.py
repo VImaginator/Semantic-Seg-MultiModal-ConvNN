@@ -35,4 +35,6 @@ hidden1 = core.Dense(64, activation = 'relu')(flatten_layer)
 inp_2 = Input(shape = (img_width , img_height, 3))
 conv_layer1_2 = convolutional.Conv2D(8, (3,3), strides=(1, 1), padding='same', activation='relu')(inp_2)
 conv_layer2_2 = convolutional.Conv2D(8, (3,3), strides=(1, 1), padding='same', activation='relu')(conv_layer1_2)
-pool_layer1_2 = pooling.
+pool_layer1_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer2_2)
+conv_layer3_2 = convolutional.Conv2D(16, (3,3), strides=(1, 1), padding='same', activation='relu')(pool_layer1_2)
+pool_layer2_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer3_2)
