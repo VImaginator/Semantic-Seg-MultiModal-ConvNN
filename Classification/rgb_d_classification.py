@@ -40,4 +40,9 @@ conv_layer3_2 = convolutional.Conv2D(16, (3,3), strides=(1, 1), padding='same', 
 pool_layer2_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer3_2)
 conv_layer4_2 = convolutional.Conv2D(32, (3,3), strides=(1, 1), padding='same', activation='relu')(pool_layer2_2)
 pool_layer3_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer4_2)
-conv_layer5_2 = convolutional.Conv2D(32, (3,3), strides=(1, 1), paddin
+conv_layer5_2 = convolutional.Conv2D(32, (3,3), strides=(1, 1), padding='same', activation='relu')(conv_layer3_2)
+pool_layer4_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer5_2)
+flatten_layer_2 = core.Flatten()(pool_layer4_2)
+hidden1_2 = core.Dense(64, activation = 'relu')(flatten_layer_2)
+
+hidden_merg
