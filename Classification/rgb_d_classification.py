@@ -38,3 +38,6 @@ conv_layer2_2 = convolutional.Conv2D(8, (3,3), strides=(1, 1), padding='same', a
 pool_layer1_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer2_2)
 conv_layer3_2 = convolutional.Conv2D(16, (3,3), strides=(1, 1), padding='same', activation='relu')(pool_layer1_2)
 pool_layer2_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer3_2)
+conv_layer4_2 = convolutional.Conv2D(32, (3,3), strides=(1, 1), padding='same', activation='relu')(pool_layer2_2)
+pool_layer3_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None)(conv_layer4_2)
+conv_layer5_2 = convolutional.Conv2D(32, (3,3), strides=(1, 1), paddin
