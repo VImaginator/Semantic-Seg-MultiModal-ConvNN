@@ -45,4 +45,12 @@ pool_layer4_2 = pooling.MaxPooling2D(pool_size=(2, 2), strides=None, padding='va
 flatten_layer_2 = core.Flatten()(pool_layer4_2)
 hidden1_2 = core.Dense(64, activation = 'relu')(flatten_layer_2)
 
-hidden_merg
+hidden_merge = concatenate([hidden1 , hidden1_2], axis=-1)
+
+dropout1 = core.Dropout(0.2)(hidden_merge)
+hidden2 = core.Dense(64,activation = 'relu')(dropout1)
+out = core.Dense(num_classes,activation='softmax')(hidden2)
+
+model1 = Model([inp, inp_2],out)
+
+model1.compile(loss = "categorical_crossentropy", optimizer = '
