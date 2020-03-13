@@ -53,4 +53,14 @@ out = core.Dense(num_classes,activation='softmax')(hidden2)
 
 model1 = Model([inp, inp_2],out)
 
-model1.compile(loss = "categorical_crossentropy", optimizer = '
+model1.compile(loss = "categorical_crossentropy", optimizer = 'rmsprop', metrics=["accuracy"])
+
+seed = 7
+
+def custom_iterator(Xp, Xs):
+    from itertools import izip
+    from keras.preprocessing.image import ImageDataGenerator
+
+    ig1 = ImageDataGenerator(rescale=1./255)
+    ig2 = ImageDataGenerator(rescale=1./255)
+    temp1 = ig1.flow_from_directory(Xp,target_size = (img_height, img_width),batch_size = batch_si
