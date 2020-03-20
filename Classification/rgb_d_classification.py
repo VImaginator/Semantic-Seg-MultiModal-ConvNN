@@ -71,4 +71,10 @@ def custom_iterator(Xp, Xs):
         yield [batch[0][0], batch[1][0]], [batch[0][1]]
 
 
-# Save the model according to the condition
+# Save the model according to the conditions  
+progbar = ProgbarLogger(count_mode='steps')
+checkpoint = ModelCheckpoint("rgbd.{epoch:02d}-{val_loss:.2f}.hdf5", monitor='val_acc', verbose=1, save_best_only=True, save_weights_only=False, mode='auto', period=1)
+early = EarlyStopping(monitor='val_acc', min_delta=0, patience=1, verbose=1, mode='auto')
+
+
+#
