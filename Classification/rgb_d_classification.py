@@ -77,4 +77,11 @@ checkpoint = ModelCheckpoint("rgbd.{epoch:02d}-{val_loss:.2f}.hdf5", monitor='va
 early = EarlyStopping(monitor='val_acc', min_delta=0, patience=1, verbose=1, mode='auto')
 
 
-#
+# Train the model 
+model1.fit_generator(
+custom_iterator(train_data_dir_nir, train_data_dir),
+steps_per_epoch = nb_train_samples,
+epochs = epochs,
+validation_data = custom_iterator(validation_data_dir_nir, validation_data_dir),
+validation_steps = nb_validation_samples, 
+callbacks = [progbar, checkp
