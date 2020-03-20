@@ -12,4 +12,15 @@ from keras.preprocessing.image import *
 
 #UTILITY GLOBAL VARIABLES
 input_dim = [256, 480]  
-num_
+num_class = 6
+C = 10
+index = [2380, 1020,  969,  240, 2775,    0]
+
+#HELPER FUNCTION OF SEGMENT_DATA_GENERATOR
+# comprises of path and extension of images in a directory
+class gen_args:
+    data_dir = None
+    data_ext = None
+    def __init__(self,dirr,ext):
+        self.data_dir = dirr
+        self.data_ext = ext
