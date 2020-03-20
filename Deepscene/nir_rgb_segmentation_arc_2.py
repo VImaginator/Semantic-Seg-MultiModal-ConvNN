@@ -24,3 +24,15 @@ class gen_args:
     def __init__(self,dirr,ext):
         self.data_dir = dirr
         self.data_ext = ext
+        
+
+#RESIZES 3D IMAGES(image)(EX: RGB) TO DESIRED SIZE(crop_size) 
+def fix_size(image, crop_size):
+    cropy, cropx = crop_size
+    height, width = image.shape[:-1]
+    
+    #adjusting height of the image 
+    cy = cropy - height
+    if cy > 0:
+        if cy % 2 == 0:
+            image = np.vstack((np.zeros((cy/2,width,3)) , image ,
