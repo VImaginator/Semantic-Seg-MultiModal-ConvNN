@@ -35,4 +35,12 @@ def fix_size(image, crop_size):
     cy = cropy - height
     if cy > 0:
         if cy % 2 == 0:
-            image = np.vstack((np.zeros((cy/2,width,3)) , image ,
+            image = np.vstack((np.zeros((cy/2,width,3)) , image , np.zeros((cy/2,width,3))))
+        else:
+            image = np.vstack((np.zeros((cy/2,width,3)) , image , np.zeros((cy/2 +1,width,3))))
+    if cy < 0:
+        if cy % 2 == 0:
+            image = np.delete(image, range(-1*cy/2), axis = 0)
+            image = np.delete(image, range(height + cy,height +  cy/2), axis = 0)
+        else:
+       
