@@ -43,4 +43,12 @@ def fix_size(image, crop_size):
             image = np.delete(image, range(-1*cy/2), axis = 0)
             image = np.delete(image, range(height + cy,height +  cy/2), axis = 0)
         else:
-       
+            image = np.delete(image, range(-1*cy/2), axis =0)
+            image = np.delete(image, range(height + cy, height + cy/2 + 1), axis=0)
+    
+    #adjusting width of the image
+    height, width = image.shape[:-1]
+    cx = cropx - width
+    if cx > 0:
+        if cx % 2 == 0:
+    
