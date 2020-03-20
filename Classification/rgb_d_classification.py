@@ -63,4 +63,12 @@ def custom_iterator(Xp, Xs):
 
     ig1 = ImageDataGenerator(rescale=1./255)
     ig2 = ImageDataGenerator(rescale=1./255)
-    temp1 = ig1.flow_from_directory(Xp,target_size = (img_height, img_width),batch_size = batch_si
+    temp1 = ig1.flow_from_directory(Xp,target_size = (img_height, img_width),batch_size = batch_size,class_mode = "categorical",seed=seed)
+    temp2 = ig2.flow_from_directory(Xs,target_size = (img_height, img_width),batch_size = batch_size,class_mode = "categorical",seed=seed)
+
+
+    for batch in izip(temp1,temp2):
+        yield [batch[0][0], batch[1][0]], [batch[0][1]]
+
+
+# Save the model according to the condition
