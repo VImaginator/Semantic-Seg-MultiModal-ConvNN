@@ -84,4 +84,4 @@ steps_per_epoch = nb_train_samples,
 epochs = epochs,
 validation_data = custom_iterator(validation_data_dir_nir, validation_data_dir),
 validation_steps = nb_validation_samples, 
-callbacks = [progbar, checkp
+callbacks = [progbar, checkpoint, early])
