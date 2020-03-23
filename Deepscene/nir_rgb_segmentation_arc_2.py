@@ -51,4 +51,10 @@ def fix_size(image, crop_size):
     cx = cropx - width
     if cx > 0:
         if cx % 2 == 0:
-    
+            image = np.hstack((np.zeros((height,cx/2,3)) , image , np.zeros((height,cx/2,3))))
+        else:
+            image = np.hstack((np.zeros((height,cx/2,3)) , image , np.zeros((height,cx/2 + 1,3))))
+    if cx < 0:
+        if cx % 2 == 0:
+            image = np.delete(image, range(-1*cx/2), axis = 1)
+            image =
