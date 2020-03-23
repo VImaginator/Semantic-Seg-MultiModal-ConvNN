@@ -81,4 +81,14 @@ def fix_label(image, no_class):
 class aug_state:
     def __init__(self,flip_axis_index=0,rotation_range=360,height_range=0.2,width_range=0.2,shear_intensity=1,color_intensity=40,zoom_range=(1.2,1.2)):
          self.flip_axis_index=flip_axis_index
-         self.rotation_range=rotation_rang
+         self.rotation_range=rotation_range
+         self.height_range=height_range
+         self.width_range=width_range
+         self.shear_intensity=shear_intensity
+         self.color_intensity=color_intensity
+         self.zoom_range=zoom_range
+
+
+def data_augmentor(x,state,row_axis=0,col_axis=1,channel_axis=-1,
+    bool_flip_axis=True,
+    bool_random
