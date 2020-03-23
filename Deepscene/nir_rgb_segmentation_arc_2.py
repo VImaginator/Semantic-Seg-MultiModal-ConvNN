@@ -77,4 +77,8 @@ def fix_label(image, no_class):
     return image
 
 
-#====================================================data==augmentation=========================
+#====================================================data==augmentation==============================================================
+class aug_state:
+    def __init__(self,flip_axis_index=0,rotation_range=360,height_range=0.2,width_range=0.2,shear_intensity=1,color_intensity=40,zoom_range=(1.2,1.2)):
+         self.flip_axis_index=flip_axis_index
+         self.rotation_range=rotation_rang
