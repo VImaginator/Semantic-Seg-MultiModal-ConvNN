@@ -57,4 +57,11 @@ def fix_size(image, crop_size):
     if cx < 0:
         if cx % 2 == 0:
             image = np.delete(image, range(-1*cx/2), axis = 1)
-            image =
+            image = np.delete(image, range(width + cx,width +  cx/2), axis = 1)
+        else:
+            image = np.delete(image, range(-1*cx/2), axis =1)
+            image = np.delete(image, range(width + cx, width + cx/2 + 1), axis=1)
+    return image
+
+
+#CONVERTING Ground Truth IMAGES(image) TO A ARRAY OF PIXELWISE ONE-HOT VECTORS(of d
