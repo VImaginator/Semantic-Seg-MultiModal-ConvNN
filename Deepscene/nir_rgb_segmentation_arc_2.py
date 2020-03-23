@@ -91,4 +91,13 @@ class aug_state:
 
 def data_augmentor(x,state,row_axis=0,col_axis=1,channel_axis=-1,
     bool_flip_axis=True,
-    bool_random
+    bool_random_rotation=True,
+    bool_random_shift=True,
+    bool_random_shear=True,
+    bool_random_channel_shift=True,
+    bool_random_zoom=True):
+    if bool_flip_axis:
+        flip_axis(x, state.flip_axis_index)
+
+    if bool_random_rotation:
+        random_rotation(x, state.rotation_range, row_axis, col_axis, channel_axis)
