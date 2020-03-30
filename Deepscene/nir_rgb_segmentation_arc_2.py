@@ -145,4 +145,11 @@ def Segment_datagen(state_aug,file_path, rgb_args, nir_args, label_args, batch_s
         yield [data[0],data[1]],[labels]
 
 #ARGUMENTS FOR DATA_GENERATOR
-train_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/rgb/','.
+train_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/rgb/','.jpg')
+train_NIR_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/nir_color/','.png')
+train_Label_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/GT_color/','.png')
+state_aug = aug_state() 
+
+train_generator = Segment_datagen(state_aug,
+    file_path = '/home/krishna/freiburg_forest_dataset/train/train.txt',
+    rgb_args =
