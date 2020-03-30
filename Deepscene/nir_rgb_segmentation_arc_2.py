@@ -132,4 +132,8 @@ def Segment_datagen(state_aug,file_path, rgb_args, nir_args, label_args, batch_s
     while True:
         for i in range(batch_size):
             index_of_random_sample = np.random.choice(len(names))
-   
+            np.random.seed(i)
+            data[0][i] = fix_size(cv2.imread(rgb_args.data_dir+names[index_of_random_sample].strip('\n')+rgb_args.data_ext), input_size)
+            data[0][batch_size*2-1-i] = data_augmentor(data[0][i],state_aug)
+            np.random.seed(i)
+            data[1][i]= fix_size(cv2.imread(nir_args
