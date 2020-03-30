@@ -140,4 +140,9 @@ def Segment_datagen(state_aug,file_path, rgb_args, nir_args, label_args, batch_s
             data[1][batch_size*2-1-i] = data_augmentor(data[1][i],state_aug)
             np.random.seed(i)
             temp = fix_size(cv2.imread(label_args.data_dir+names[index_of_random_sample].strip('\n')+label_args.data_ext), input_size)
-       
+            labels[i] = fix_label(temp,num_class)
+            labels[batch_size*2-1-i] = fix_label(data_augmentor(temp, state_aug, bool_random_channel_shift= False),num_class)
+        yield [data[0],data[1]],[labels]
+
+#ARGUMENTS FOR DATA_GENERATOR
+train_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/rgb/','.
