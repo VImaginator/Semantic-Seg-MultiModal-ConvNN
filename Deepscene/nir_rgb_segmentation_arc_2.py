@@ -152,4 +152,11 @@ state_aug = aug_state()
 
 train_generator = Segment_datagen(state_aug,
     file_path = '/home/krishna/freiburg_forest_dataset/train/train.txt',
-    rgb_args =
+    rgb_args = train_RGB_args,
+    nir_args = train_NIR_args,
+    label_args = train_Label_args,
+    batch_size= 8,
+    input_size=input_dim)
+
+val_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/rgb/','.jpg')
+val_NIR_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/nir_co
