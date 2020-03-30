@@ -109,4 +109,14 @@ def data_augmentor(x,state,row_axis=0,col_axis=1,channel_axis=-1,
         random_shear(x, state.shear_intensity, row_axis, col_axis, channel_axis)
 
     if bool_random_channel_shift:
-        random_channel_shi
+        random_channel_shift(x, state.color_intensity, channel_axis)
+
+    if bool_random_zoom:
+        random_zoom(x, state.zoom_range, row_axis, col_axis, channel_axis)
+
+    return x
+
+
+
+#=====================================================================================================================
+#DATAGENERATOR FOR MULTIMODAL SEM
