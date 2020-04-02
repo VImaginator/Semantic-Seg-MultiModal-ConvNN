@@ -166,4 +166,12 @@ val_generator = Segment_datagen(state_aug,
     file_path = '/home/krishna/freiburg_forest_dataset/valid/valid.txt',
     rgb_args = val_RGB_args,
     nir_args = val_NIR_args,
-    label_a
+    label_args = val_Label_args,
+    batch_size= 8,
+    input_size=input_dim)
+
+#================================================MODEL_ARCHITECTURE============================================================
+
+# RGB MODALITY BRANCH OF CNN
+inputs_rgb = Input(shape=(input_dim[0],input_dim[1],3))
+vgg_model_rgb = VGG16(
