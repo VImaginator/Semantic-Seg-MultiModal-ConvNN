@@ -177,4 +177,6 @@ inputs_rgb = Input(shape=(input_dim[0],input_dim[1],3))
 vgg_model_rgb = VGG16(weights='imagenet', include_top= False)
 conv_model_rgb = vgg_model_rgb(inputs_rgb)
 conv_model_rgb = Conv2D(1024, (3,3), strides=(1, 1), padding = 'same', activation='relu',data_format="channels_last") (conv_model_rgb)
-conv_model_rgb = Conv2D(1024, (3,3), strides=(1, 1), padding = 'same', activation='
+conv_model_rgb = Conv2D(1024, (3,3), strides=(1, 1), padding = 'same', activation='relu',data_format="channels_last") (conv_model_rgb)
+deconv_rgb_1 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_model_rgb)
+#=====================================================================================
