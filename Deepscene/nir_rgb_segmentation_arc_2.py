@@ -188,4 +188,9 @@ conv_rgb_2 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activat
 deconv_rgb_3 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_rgb_2)
 conv_rgb_3 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activation='relu', data_format='channels_last')(deconv_rgb_3)
 deconv_rgb_4 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_rgb_3)
-conv_rgb_4 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activation='relu', data_format='channels_last')(deconv_rg
+conv_rgb_4 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activation='relu', data_format='channels_last')(deconv_rgb_4)
+deconv_rgb_5 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_rgb_4)
+
+# NIR MODALITY BRANCH OF CNN
+inputs_nir = Input(shape=(input_dim[0],input_dim[1],3))
+vgg_model_nir = VGG16(weights='imagenet', include_top= Fa
