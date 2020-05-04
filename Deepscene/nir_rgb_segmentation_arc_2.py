@@ -197,4 +197,6 @@ vgg_model_nir = VGG16(weights='imagenet', include_top= False)
 conv_model_nir = vgg_model_rgb(inputs_nir)
 conv_model_nir = Conv2D(1024, (3,3), strides=(1, 1), padding = 'same', activation='relu',data_format="channels_last") (conv_model_nir)
 conv_model_nir = Conv2D(1024, (3,3), strides=(1, 1), padding = 'same', activation='relu',data_format="channels_last") (conv_model_nir)
-deconv_nir_1 = Co
+deconv_nir_1 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_model_nir)
+#============================================================================================================
+conv_nir_1 = Conv2D(num_class*C, (3,3),
