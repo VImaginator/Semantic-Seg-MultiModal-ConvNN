@@ -204,4 +204,6 @@ dropout_nir = core.Dropout(0.4)(conv_nir_1)
 #===============================================================================================================
 deconv_nir_2 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(dropout_nir)
 conv_nir_2 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activation='relu', data_format='channels_last')(deconv_nir_2)
-deconv_nir_3 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_forma
+deconv_nir_3 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_nir_2)
+conv_nir_3 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activation='relu', data_format='channels_last')(deconv_nir_3)
+deconv_nir_4 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='s
