@@ -215,4 +215,10 @@ deconv_nir_5 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same'
 merge_rgb_nir = keras.layers.concatenate([deconv_rgb_5, deconv_nir_5], axis=-1)
 
 # DECONVOLUTION Layers
-deconv_last = Conv2DTranspose(num_clas
+deconv_last = Conv2DTranspose(num_class, (1,1), strides=(1, 1), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal') (merge_rgb_nir)
+
+#VECTORIZING OUTPUT
+out_reshape = core.Reshape((input_dim[0]*input_dim[1],num_class))(deconv_last)
+out = core.Activation('softmax')(out_reshape)
+
+# MODAL [INPUTS , OUTPUTS]
