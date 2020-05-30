@@ -208,4 +208,11 @@ deconv_nir_3 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same'
 conv_nir_3 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activation='relu', data_format='channels_last')(deconv_nir_3)
 deconv_nir_4 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_nir_3)
 conv_nir_4 = Conv2D(num_class*C, (3,3), strides=(1,1), padding = 'same', activation='relu', data_format='channels_last')(deconv_nir_4)
-deconv_nir_5 = Conv2DTranspose(num_class
+deconv_nir_5 = Conv2DTranspose(num_class*C,(4,4), strides=(2, 2), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal')(conv_nir_4)
+
+
+# CONACTENATE the ends of RGB & NIR 
+merge_rgb_nir = keras.layers.concatenate([deconv_rgb_5, deconv_nir_5], axis=-1)
+
+# DECONVOLUTION Layers
+deconv_last = Conv2DTranspose(num_clas
