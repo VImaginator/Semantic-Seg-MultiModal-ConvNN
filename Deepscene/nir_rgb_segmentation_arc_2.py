@@ -236,4 +236,4 @@ checkpoint = ModelCheckpoint("nir_rgb_segmentation_2.{epoch:02d}.hdf5", monitor=
 #early = EarlyStopping(monitor='val_acc', min_delta=0, patience=1, verbose=1, mode='auto')
 #haven't specified validation data directory yet
 
-model.fit_generator(tr
+model.fit_generator(train_generator,steps_per_epoch=2000,epochs=50, callbacks=[progbar,checkpoint], validation_data = val_generator, validation_steps = 500)
