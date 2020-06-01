@@ -232,4 +232,8 @@ model.summary()
 
 # Save the model according to the conditions  
 progbar = ProgbarLogger(count_mode='steps')
-checkpoint = ModelChe
+checkpoint = ModelCheckpoint("nir_rgb_segmentation_2.{epoch:02d}.hdf5", monitor='val_acc', verbose=1, save_best_only=False, save_weights_only=False, mode='auto', period=1)
+#early = EarlyStopping(monitor='val_acc', min_delta=0, patience=1, verbose=1, mode='auto')
+#haven't specified validation data directory yet
+
+model.fit_generator(tr
