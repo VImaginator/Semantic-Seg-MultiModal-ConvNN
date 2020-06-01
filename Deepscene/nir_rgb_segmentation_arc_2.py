@@ -222,3 +222,14 @@ out_reshape = core.Reshape((input_dim[0]*input_dim[1],num_class))(deconv_last)
 out = core.Activation('softmax')(out_reshape)
 
 # MODAL [INPUTS , OUTPUTS]
+model = Model(inputs=[inputs_rgb,inputs_nir], outputs=[out])
+print 'compiling'
+model.compile(optimizer='sgd',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+model.summary()
+
+
+# Save the model according to the conditions  
+progbar = ProgbarLogger(count_mode='steps')
+checkpoint = ModelChe
