@@ -8,4 +8,15 @@ import numpy as np
 from keras.applications.vgg16 import VGG16
 from keras.callbacks import ProgbarLogger, EarlyStopping, ModelCheckpoint, TensorBoard
 from keras.models import Model, Sequential
-from keras.layer
+from keras.layers import Input, Convolution2D, MaxPooling2D, Conv2DTranspose, Conv2D, concatenate
+from keras.layers.core import Reshape, Activation, Dropout
+from keras.preprocessing.image import *
+from keras.optimizers import SGD
+
+
+#UTILITY GLOBAL VARIABLES
+input_dim = (512,928)
+dim_tup = (928,512)
+num_class = 6
+C = 4
+ind
