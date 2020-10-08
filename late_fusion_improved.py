@@ -19,4 +19,14 @@ input_dim = (512,928)
 dim_tup = (928,512)
 num_class = 6
 C = 4
-ind
+index = [0, 1020, 1377  , 240, 735, 2380]
+#HELPER FUNCTION OF SEGMENT_DATA_GENERATOR
+# comprises of path and extension of images in a directory
+class gen_args:
+    data_dir = None
+    data_ext = None
+    def __init__(self,dirr,ext):
+        self.data_dir = dirr
+        self.data_ext = ext
+        
+#CONVERTING MASKED IM
