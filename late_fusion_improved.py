@@ -48,4 +48,16 @@ def fix_label(image, no_class):
          self.flip_axis_index=flip_axis_index
          self.zoom_range=zoom_range
          
-def data_augmentor(x,state,row_axis=1,col_axis=0,channel_a
+def data_augmentor(x,state,row_axis=1,col_axis=0,channel_axis=-1):
+    #dt = datetime.now()
+    #(int(str(dt).split('.')[1])%100)
+    t = np.random.randint(4,size=2)
+    temp =[0,0,0,0,0]
+    temp[t[0]] = 1
+    temp[t[1]] = 1
+    #print temp
+    if temp[0]:
+        x = flip_axis(x, state.flip_axis_index)
+  
+    if temp[1]:
+        M = cv2.getRotationMatrix2D((
