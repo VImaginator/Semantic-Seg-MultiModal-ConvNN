@@ -42,4 +42,10 @@ def fix_label(image, no_class):
     return image
 
 
-#=====================================
+#====================================================data==augmentation==============================================================
+'''class aug_state:
+    def __init__(self,flip_axis_index=0,zoom_range=(1.2,1.2)):
+         self.flip_axis_index=flip_axis_index
+         self.zoom_range=zoom_range
+         
+def data_augmentor(x,state,row_axis=1,col_axis=0,channel_a
