@@ -70,4 +70,7 @@ def data_augmentor(x,state,row_axis=1,col_axis=0,channel_axis=-1):
         #del M
 
     if temp[3]:
-        pts1 = np.float32([[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[
+        pts1 = np.float32([[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])]])
+        pts2 = np.float32([[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])]])
+        M = cv2.getAffineTransform(pts1,pts2)
+        x = cv2.warpAffine(x,M,(x.shape[1],x.
