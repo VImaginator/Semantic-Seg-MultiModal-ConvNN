@@ -73,4 +73,18 @@ def data_augmentor(x,state,row_axis=1,col_axis=0,channel_axis=-1):
         pts1 = np.float32([[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])]])
         pts2 = np.float32([[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])],[np.random.randint(x.shape[0]),np.random.randint(x.shape[1])]])
         M = cv2.getAffineTransform(pts1,pts2)
-        x = cv2.warpAffine(x,M,(x.shape[1],x.
+        x = cv2.warpAffine(x,M,(x.shape[1],x.shape[0]),borderMode = cv2.BORDER_REFLECT)
+        #del M
+	#del pts1
+	#:del pts2
+
+    if 0:
+        x = random_zoom(x, state.zoom_range, row_axis, col_axis, channel_axis,fill_mode='reflect')
+        x = np.swapaxes(x,0,1)
+        x = np.swapaxes(x,1,2)
+        
+
+    return x
+'''
+
+#======================================
