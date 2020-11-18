@@ -87,4 +87,7 @@ def data_augmentor(x,state,row_axis=1,col_axis=0,channel_axis=-1):
     return x
 '''
 
-#======================================
+#=====================================================================================================================
+#DATAGENERATOR FOR MULTIMODAL SEMANTIC SEGMENTATION
+def Segment_datagen(file_path, rgb_args, nir_args, label_args, batch_size, input_size,val_flag):
+    # Create MEMORY enough for one batch of input(s) + augmentation & labels 
