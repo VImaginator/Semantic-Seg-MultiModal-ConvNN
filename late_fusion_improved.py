@@ -60,4 +60,10 @@ def data_augmentor(x,state,row_axis=1,col_axis=0,channel_axis=-1):
         x = flip_axis(x, state.flip_axis_index)
   
     if temp[1]:
-        M = cv2.getRotationMatrix2D((
+        M = cv2.getRotationMatrix2D((x.shape[1]/2,x.shape[0]/2),np.random.randint(360),1)   #last argument is scale in rotation
+        x = cv2.warpAffine(x,M,(x.shape[1],x.shape[0]), borderMode=cv2.BORDER_REFLECT)
+	#del M        
+
+    if temp[2]:
+        M = np.float32([[1,0,np.random.randint(x.shape[0])],[0,1,np.random.randint(x.shape[1])]])
+        x = cv2.wa
