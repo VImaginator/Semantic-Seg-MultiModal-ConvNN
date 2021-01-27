@@ -97,4 +97,13 @@ def Segment_datagen(file_path, rgb_args, nir_args, label_args, batch_size, input
     files = open(file_path)
     names = files.readlines()
     files.close()
-    # Enter the indefinite loop of gener
+    # Enter the indefinite loop of generator
+    while True:
+	dt = datetime.now()
+        np.random.seed(int(str(dt).split('.')[1])%100)
+        rand_inds = np.random.random_integers(0,len(names)-1, size=batch_size)
+	for i in range(batch_size):
+	  	flag = np.random.randint(4)
+		print flag
+		if flag or val_flag:
+			print names[rand_inds[i]].strip('\n'
