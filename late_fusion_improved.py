@@ -106,4 +106,7 @@ def Segment_datagen(file_path, rgb_args, nir_args, label_args, batch_size, input
 	  	flag = np.random.randint(4)
 		print flag
 		if flag or val_flag:
-			print names[rand_inds[i]].strip('\n'
+			print names[rand_inds[i]].strip('\n')
+			data[0][i] = cv2.resize(cv2.imread(rgb_args.data_dir+names[rand_inds[i]].strip('\n')+rgb_args.data_ext), dim_tup)
+			data[1][i]= cv2.resize(cv2.imread(nir_args.data_dir+names[rand_inds[i]].strip('\n')+nir_args.data_ext), dim_tup)
+			labels[i] = fix_label(cv2.resize(cv2.imread(label_args.data_dir+names[rand_inds[i]].strip('\n')+label_args.data
