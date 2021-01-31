@@ -116,4 +116,8 @@ def Segment_datagen(file_path, rgb_args, nir_args, label_args, batch_size, input
 			num = '0'*(6-len(num))+num
 			print names[rand_inds[i]].strip('\n')+'_'+num
 			data[0][i] = cv2.resize(cv2.imread(rgb_args.data_dir+'Augmented/'+names[rand_inds[i]].strip('\n')+'_'+num+rgb_args.data_ext), dim_tup)
-			d
+			data[1][i] =cv2.resize(cv2.imread(nir_args.data_dir+'Augmented/'+names[rand_inds[i]].strip('\n')+'_'+num+nir_args.data_ext), dim_tup)
+			labels[i] = fix_label(cv2.resize(cv2.imread(label_args.data_dir+'Augmented/'+names[rand_inds[i]].strip('\n')+'_'+num+label_args.data_ext), dim_tup),num_class)
+			print 'done'
+	
+	yield [
