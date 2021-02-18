@@ -120,4 +120,13 @@ def Segment_datagen(file_path, rgb_args, nir_args, label_args, batch_size, input
 			labels[i] = fix_label(cv2.resize(cv2.imread(label_args.data_dir+'Augmented/'+names[rand_inds[i]].strip('\n')+'_'+num+label_args.data_ext), dim_tup),num_class)
 			print 'done'
 	
-	yield [
+	yield [data[0],data[1]],[labels]
+
+
+#ARGUMENTS FOR DATA_GENERATOR
+#state_aug = aug_state() 
+
+
+train_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/rgb/','.jpg')
+train_NIR_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/nir_color/','.png')
+train_Label_args = gen_args ('/home/krishna/freibur
