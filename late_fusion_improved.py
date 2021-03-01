@@ -142,4 +142,9 @@ train_generator = Segment_datagen(
 
 
 
-valid_
+valid_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/rgb/','.jpg')
+valid_NIR_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/nir_color/','.png')
+valid_Label_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/GT_color/','.png')
+
+valid_generator = Segment_datagen(
+    fil
