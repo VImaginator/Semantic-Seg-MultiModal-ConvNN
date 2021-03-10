@@ -147,4 +147,13 @@ valid_NIR_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/nir_colo
 valid_Label_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/GT_color/','.png')
 
 valid_generator = Segment_datagen(
-    fil
+    file_path = '/home/krishna/freiburg_forest_dataset/valid/valid.txt',
+    rgb_args = valid_RGB_args,
+    nir_args = valid_NIR_args,
+    label_args = valid_Label_args,
+    batch_size= 1,
+    input_size=input_dim,
+    val_flag = True)
+
+
+#================================================MODEL_ARCH
