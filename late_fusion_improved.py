@@ -156,4 +156,10 @@ valid_generator = Segment_datagen(
     val_flag = True)
 
 
-#================================================MODEL_ARCH
+#================================================MODEL_ARCHITECTURE============================================================
+
+# RGB MODALITY BRANCH OF CNN
+inputs_rgb = Input(shape=(input_dim[0],input_dim[1],3))
+vgg_model_rgb = VGG16(weights='imagenet', include_top = False,modality_num=0)
+conv_model_rgb = vgg_model_rgb(inputs_rgb)
+#conv_model_rgb = Conv2D(32, (3,3), strides=(1, 1), padding = 'sam
