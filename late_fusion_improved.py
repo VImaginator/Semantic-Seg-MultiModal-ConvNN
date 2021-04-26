@@ -164,4 +164,10 @@ vgg_model_rgb = VGG16(weights='imagenet', include_top = False,modality_num=0)
 conv_model_rgb = vgg_model_rgb(inputs_rgb)
 #conv_model_rgb = Conv2D(32, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_rgb)
 #conv_model_rgb = Conv2D(64, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_rgb)
-conv_model_rgb = Conv2D(128, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_m
+conv_model_rgb = Conv2D(128, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_rgb)
+conv_model_rgb = Conv2D(256, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_rgb)
+dropout_rgb = Dropout(0.2)(conv_model_rgb)
+
+# NIR MODALITY BRANCH OF CNN
+inputs_nir = Input(shape=(input_dim[0],input_dim[1],3))
+vg
