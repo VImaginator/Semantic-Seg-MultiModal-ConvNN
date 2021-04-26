@@ -170,4 +170,7 @@ dropout_rgb = Dropout(0.2)(conv_model_rgb)
 
 # NIR MODALITY BRANCH OF CNN
 inputs_nir = Input(shape=(input_dim[0],input_dim[1],3))
-vg
+vgg_model_nir = VGG16(weights='imagenet', include_top= False,modality_num=1)
+conv_model_nir = vgg_model_nir(inputs_nir)
+#conv_model_nir = Conv2D(32, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_nir)
+#conv_model_nir = Conv2D(64, (3,3), strides=(1, 1), padding 
