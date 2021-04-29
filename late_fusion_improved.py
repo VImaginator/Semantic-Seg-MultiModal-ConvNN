@@ -190,4 +190,13 @@ out_reshape = Reshape((input_dim[0]*input_dim[1],num_class))(deconv_last)
 out = Activation('softmax')(out_reshape)
 
 # MODAL [INPUTS , OUTPUTS]
-model = Model(inputs=[inputs_rgb, inputs_nir], outputs
+model = Model(inputs=[inputs_rgb, inputs_nir], outputs=[out])
+print 'compiling'
+model.compile(optimizer=SGD(lr=0.008, decay=1e-6, momentum=0.9, nesterov=True),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.summary()
+# Save the model according to the conditions  
+progbar = ProgbarLogger(count_mode='steps')
+checkpoint = ModelCheckpoi
