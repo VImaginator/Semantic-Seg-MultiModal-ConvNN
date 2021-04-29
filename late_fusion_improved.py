@@ -175,4 +175,12 @@ conv_model_nir = vgg_model_nir(inputs_nir)
 #conv_model_nir = Conv2D(32, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_nir)
 #conv_model_nir = Conv2D(64, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_nir)
 conv_model_nir = Conv2D(128, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_nir)
-conv_model_nir = Conv2D(256, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_for
+conv_model_nir = Conv2D(256, (3,3), strides=(1, 1), padding = 'same', activation='tanh',data_format="channels_last") (conv_model_nir)
+dropout_nir = Dropout(0.2)(conv_model_nir)
+
+
+# CONACTENATE the ends of RGB & NIR 
+merge_rgb_nir = concatenate([dropout_rgb, dropout_nir], axis=-1)
+
+# DECONVOLUTION Layers
+deconv_last = Conv2DTranspose(num_class, (64,64), strides=(32, 32), padding='same', data_format=
