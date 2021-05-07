@@ -199,4 +199,6 @@ model.compile(optimizer=SGD(lr=0.008, decay=1e-6, momentum=0.9, nesterov=True),
 model.summary()
 # Save the model according to the conditions  
 progbar = ProgbarLogger(count_mode='steps')
-checkpoint = ModelCheckpoi
+checkpoint = ModelCheckpoint("late_fusion_new_arc_{epoch:02d}.hdf5", monitor='val_loss', verbose=1, save_best_only=False, save_weights_only=False, mode='auto', period=1)
+early = EarlyStopping(monitor='val_acc', min_delta=0, patience=1, verbose=1, mode='auto')
+board = TensorBoard(log_dir='./logs_training', histogram_freq=2, write_graph
