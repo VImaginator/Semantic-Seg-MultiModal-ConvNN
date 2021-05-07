@@ -99,3 +99,26 @@ def construct_label(a):
 	    class_count[4] += 1
         if b[i] ==5:
             res[i]=req[5]
+	    class_count[5] += 1
+    
+    print class_count
+    res = res.reshape(input_size[1],input_size[0],3)
+    return res
+
+#-------------------------------------------
+
+input_size = (928,512)
+data = np.zeros((2,1,input_size[1],input_size[0],3),dtype=np.uint8)
+
+file1  = open('/home/krishna/freiburg_forest_dataset/test/test.txt')
+names = file1.readlines()
+file1.close()
+for n in range(len(names)):
+	print '=================image - '+str(n)+'==================='
+	name = names[n].strip('\n')
+	data[0][0] =cv2.resize(cv2.imread('/home/krishna/freiburg_forest_dataset/test/rgb/'+name+'.jpg'), input_size)
+	data[1][0] =cv2.resize(cv2.imread('/home/krishna/freiburg_forest_dataset/test/nir_color/'+name+'.png'), input_size)
+	a = model.predict_on_batch( [data[0],data[1]] )
+	dt = np.zeros((input_size[1],input_size[0],3),dtype=np.uint8)
+	dt =cv2.resize(cv2.imread('/home/krishna/freiburg_forest_dataset/test/GT_color/'+name+'.png'), input_size)
+	cv2.imwrite('/home/krishna/freiburg_forest_dataset/test/GT_color/'+name+'_predicted_AUG'+'.jpg', construct_label(a[0]))
