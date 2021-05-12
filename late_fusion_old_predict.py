@@ -7,4 +7,13 @@ import numpy as np
 from keras.applications.vgg16 import VGG16
 from keras.callbacks import ProgbarLogger, EarlyStopping, ModelCheckpoint, TensorBoard
 from keras.models import Model, Sequential
-from keras.layers import Input, Convolutio
+from keras.layers import Input, Convolution2D, MaxPooling2D, Conv2DTranspose, Conv2D, concatenate
+from keras.layers.core import Reshape, Activation, Dropout
+from keras.preprocessing.image import *
+from keras.optimizers import SGD
+#UTILITY GLOBAL VARIABLES
+input_dim = [512,928]  
+input_dim_tuple = (input_dim[0],input_dim[1])
+num_class = 6
+C=4
+index = [0, 1020,1377  ,240,
