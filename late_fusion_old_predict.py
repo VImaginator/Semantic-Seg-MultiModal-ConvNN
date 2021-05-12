@@ -16,4 +16,15 @@ input_dim = [512,928]
 input_dim_tuple = (input_dim[0],input_dim[1])
 num_class = 6
 C=4
-index = [0, 1020,1377  ,240,
+index = [0, 1020,1377  ,240, 735, 2380]
+
+
+
+
+
+#================================================MODEL_ARCHITECTURE============================================================
+
+# RGB MODALITY BRANCH OF CNN
+inputs_rgb = Input(shape=(input_dim[0],input_dim[1],3))
+vgg_model_rgb = VGG16(weights='imagenet', include_top = False,modality_num=0)
+conv_mo
