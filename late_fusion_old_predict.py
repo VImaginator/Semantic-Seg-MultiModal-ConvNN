@@ -47,4 +47,13 @@ merge_rgb_nir = concatenate([conv_model_nir, conv_model_rgb], axis=-1)
 deconv_last = Conv2DTranspose(num_class, (64,64), strides=(32, 32), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal') (merge_rgb_nir)
 
 #VECTORIZING OUTPUT
-out_reshape = Reshape((input_dim[0]*input_dim[1]
+out_reshape = Reshape((input_dim[0]*input_dim[1],num_class))(deconv_last)
+out = Activation('softmax')(out_reshape)
+
+# MODAL [INPUTS , OUTPUTS]
+model = Model(inputs=[inputs_rgb, inputs_nir], outputs=[out])
+
+print 'compiling'
+model.compile(optimizer=SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True), loss='categorical_crossentropy', metrics=['accuracy'])
+
+model.
