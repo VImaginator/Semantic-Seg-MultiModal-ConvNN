@@ -41,4 +41,10 @@ conv_model_nir = Conv2D(128, (3,3), strides=(1, 1), padding = 'same', activation
 dropout_nir = Dropout(0.4)(conv_model_nir)
 
 # CONACTENATE the ends of RGB & NIR 
-merge_rgb_nir = concatenate([conv_model_nir, conv_model_rgb
+merge_rgb_nir = concatenate([conv_model_nir, conv_model_rgb], axis=-1)
+
+# DECONVOLUTION Layers
+deconv_last = Conv2DTranspose(num_class, (64,64), strides=(32, 32), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal') (merge_rgb_nir)
+
+#VECTORIZING OUTPUT
+out_reshape = Reshape((input_dim[0]*input_dim[1]
