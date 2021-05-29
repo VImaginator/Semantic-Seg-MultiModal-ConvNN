@@ -56,4 +56,11 @@ model = Model(inputs=[inputs_rgb, inputs_nir], outputs=[out])
 print 'compiling'
 model.compile(optimizer=SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True), loss='categorical_crossentropy', metrics=['accuracy'])
 
-model.
+model.load_weights("late_fusion_working_noaug.hdf5",by_name=True)
+model.summary()
+
+def fix_label(image, no_class):
+        width , height, depth = image.shape
+        #generating hashes for each pixel (index array above has the hash values for each class)
+        image = np.dot(image.reshape(width*height,depth)[:,],[1,4,9])
+  
