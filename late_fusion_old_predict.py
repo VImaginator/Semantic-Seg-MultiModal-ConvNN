@@ -79,4 +79,17 @@ def construct_label(a):
     res = np.zeros((b.shape[0],3),dtype=np.uint8)
     class_count = [0,0,0,0,0,0]
     for i in range(b.shape[0]):
-        if b
+        if b[i] ==0:
+            res[i]=req[0]
+	    class_count[0] += 1
+        if b[i] ==1:
+            res[i]=req[1]
+            class_count[1] += 1
+        if b[i] ==2:
+            res[i]=req[2]
+	    class_count[2] += 1
+        if b[i] ==3:
+            res[i]=req[3]
+	    class_count[3] += 1
+        if b[i] ==4:
+            res[i
