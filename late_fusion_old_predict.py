@@ -72,4 +72,11 @@ def fix_label(image, no_class):
         return image
 
 
-def c
+def construct_label(a):
+    b = np.zeros(a[:-1].shape, dtype = np.uint8)
+    b = a.argmax(1)
+    req = np.array([255,255,255,0,255,0,51,102,102,0,60,0,255,120,0,170,170,170],dtype=np.uint8).reshape(6,3)
+    res = np.zeros((b.shape[0],3),dtype=np.uint8)
+    class_count = [0,0,0,0,0,0]
+    for i in range(b.shape[0]):
+        if b
