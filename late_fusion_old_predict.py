@@ -63,4 +63,13 @@ def fix_label(image, no_class):
         width , height, depth = image.shape
         #generating hashes for each pixel (index array above has the hash values for each class)
         image = np.dot(image.reshape(width*height,depth)[:,],[1,4,9])
-  
+        #converting hashes to indices of classes
+        for i in range(no_class):
+            image[image == index[i]] = i
+        #image[image == 0]
+        #converting each index into one-hot vector of dim of classes(no_class)
+        image = (np.arange(no_class) == image[...,None])*1
+        return image
+
+
+def c
