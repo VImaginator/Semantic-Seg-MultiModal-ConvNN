@@ -119,4 +119,6 @@ for n in range(len(names)):
 	data[1][0] =cv2.resize(cv2.imread('/home/krishna/freiburg_forest_dataset/test/nir_color/'+name+'.png'), input_size)
 	a = model.predict_on_batch( [data[0],data[1]] )
 	dt = np.zeros((input_size[1],input_size[0],3),dtype=np.uint8)
-	dt =c
+	dt =cv2.resize(cv2.imread('/home/krishna/freiburg_forest_dataset/test/GT_color/'+name+'.png'), input_size)
+	cv2.imwrite('/home/krishna/freiburg_forest_dataset/test/GT_color/'+name+'_predicted_NO_AUG'+'.jpg', construct_label(a[0]))
+
