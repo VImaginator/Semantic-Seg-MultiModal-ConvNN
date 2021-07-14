@@ -104,4 +104,15 @@ def construct_label(a):
 
 #-------------------------------------------
 input_size = (928,512)
-data = np.zeros((2,1,inp
+data = np.zeros((2,1,input_size[1],input_size[0],3),dtype=np.uint8)
+
+
+
+
+file1  = open('/home/krishna/freiburg_forest_dataset/test/test.txt')
+names = file1.readlines()
+file1.close()
+for n in range(len(names)):
+	print '=================image - '+str(n)+'==================='
+	name = names[n].strip('\n')
+	data[0][0] =cv2.resize(cv2
