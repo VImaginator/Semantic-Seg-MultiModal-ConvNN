@@ -92,4 +92,16 @@ def construct_label(a):
             res[i]=req[3]
 	    class_count[3] += 1
         if b[i] ==4:
-            res[i
+            res[i]=req[4]
+	    class_count[4] += 1
+        if b[i] ==5:
+            res[i]=req[5]
+	    class_count[5] += 1
+    
+    print class_count
+    res = res.reshape(input_size[1],input_size[0],3)
+    return res
+
+#-------------------------------------------
+input_size = (928,512)
+data = np.zeros((2,1,inp
