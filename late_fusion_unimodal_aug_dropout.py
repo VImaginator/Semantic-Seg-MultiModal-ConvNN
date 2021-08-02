@@ -29,4 +29,10 @@ class gen_args:
         self.data_dir = dirr
         self.data_ext = ext
         
-#CONVERTING MASKED IMAGES(image) TO A ARRAY OF PIXELWISE ONE-HOT
+#CONVERTING MASKED IMAGES(image) TO A ARRAY OF PIXELWISE ONE-HOT VECTORS(of dimension 'no_class')
+def fix_label(image, no_class):
+    width , height, depth = image.shape
+    #generating hashes for each pixel (index array above has the hash values for each class)
+    image = np.dot(image.reshape(width*height,depth)[:,],[1,4,9])
+    #converting hashes to indices of classes
+    fo
