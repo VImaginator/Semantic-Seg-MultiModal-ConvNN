@@ -79,3 +79,12 @@ def data_augmentor(x,state,row_axis=1,col_axis=0,channel_axis=-1):
 	#:del pts2
 
     if 0:
+        x = random_zoom(x, state.zoom_range, row_axis, col_axis, channel_axis,fill_mode='reflect')
+        x = np.swapaxes(x,0,1)
+        x = np.swapaxes(x,1,2)
+        
+
+    return x
+'''
+
+#============================================================================================================
