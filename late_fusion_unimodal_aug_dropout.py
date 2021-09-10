@@ -113,4 +113,14 @@ def Segment_datagen(file_path, rgb_args, label_args, batch_size, input_size,val_
 			num = bin(np.random.randint(1,64))[2:]
 			num = '0'*(6-len(num))+num
 
-			data[i] = cv2.resize(cv2.imread(rgb_args.data_dir+'Augmented/'+names[rand_inds[i]].strip('\n')+'_
+			data[i] = cv2.resize(cv2.imread(rgb_args.data_dir+'Augmented/'+names[rand_inds[i]].strip('\n')+'_'+num+rgb_args.data_ext), dim_tup)
+			labels[i] = fix_label(cv2.resize(cv2.imread(label_args.data_dir+'Augmented/'+names[rand_inds[i]].strip('\n')+'_'+num+label_args.data_ext), dim_tup),num_class)
+
+	
+	yield [data],[labels]
+
+
+#ARGUMENTS FOR DATA_GENERATOR
+#state_aug = aug_state() 
+
+#============================
