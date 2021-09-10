@@ -100,4 +100,10 @@ def Segment_datagen(file_path, rgb_args, label_args, batch_size, input_size,val_
     # Enter the indefinite loop of generator
     while True:
 	dt = datetime.now()
-        np.rando
+        np.random.seed(int(str(dt).split('.')[1])%100)
+        rand_inds = np.random.random_integers(0,len(names)-1, size=batch_size)
+	for i in range(batch_size):
+	  	flag = np.random.randint(4)
+
+		if flag or val_flag:
+			data[i] = cv2.resize(cv2.imread(rgb_args.data_dir+names[rand_inds[i]].strip('\n')+rgb_args.data_e
