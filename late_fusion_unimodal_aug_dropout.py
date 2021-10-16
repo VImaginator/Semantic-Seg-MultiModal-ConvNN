@@ -128,4 +128,14 @@ train_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/rgb/','.
 train_Label_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/GT_color/','.png')
 
 train_generator = Segment_datagen(
-    file_path = '/hom
+    file_path = '/home/krishna/freiburg_forest_dataset/train/train.txt',
+    rgb_args = train_RGB_args,
+    label_args = train_Label_args,
+    batch_size= 1,
+    input_size=input_dim,
+    val_flag = False)
+
+
+
+valid_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/valid/rgb/','.jpg')
+valid_Label_args = gen_args ('/home/krishn
