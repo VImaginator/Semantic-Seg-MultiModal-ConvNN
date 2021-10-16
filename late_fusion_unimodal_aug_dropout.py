@@ -123,4 +123,9 @@ def Segment_datagen(file_path, rgb_args, label_args, batch_size, input_size,val_
 #ARGUMENTS FOR DATA_GENERATOR
 #state_aug = aug_state() 
 
-#============================
+#================================================Generator Instances============================================================
+train_RGB_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/rgb/','.jpg')
+train_Label_args = gen_args ('/home/krishna/freiburg_forest_dataset/train/GT_color/','.png')
+
+train_generator = Segment_datagen(
+    file_path = '/hom
