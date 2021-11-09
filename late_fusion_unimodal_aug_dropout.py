@@ -176,4 +176,8 @@ model.compile(optimizer=SGD(lr=0.008, decay=1e-6, momentum=0.9, nesterov=True),
               metrics=['accuracy'])
 model.load_weights('late_fusion_unimodal_99.hdf5')
 model.summary()
-#===================================
+#================================================TRAINING============================================================
+# Save the model according to the conditions  
+progbar = ProgbarLogger(count_mode='steps')
+checkpoint = ModelCheckpoint("late_fusion_unimodal_{epoch:02d}.hdf5", monitor='val_loss', verbose=1, save_best_only=False, save_weights_only=False, mode='auto', period=1)
+ear
