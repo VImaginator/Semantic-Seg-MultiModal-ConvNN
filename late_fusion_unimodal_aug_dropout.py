@@ -169,4 +169,11 @@ out_reshape = Reshape((input_dim[0]*input_dim[1],num_class))(deconv_last)
 out = Activation('softmax')(out_reshape)
 
 # MODAL [INPUTS , OUTPUTS]
-model = Model(in
+model = Model(inputs=[inputs_rgb], outputs=[out])
+print 'compiling'
+model.compile(optimizer=SGD(lr=0.008, decay=1e-6, momentum=0.9, nesterov=True),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+model.load_weights('late_fusion_unimodal_99.hdf5')
+model.summary()
+#===================================
