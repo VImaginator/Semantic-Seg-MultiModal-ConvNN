@@ -162,4 +162,11 @@ conv_model_rgb = Conv2D(256, (3,3), strides=(1, 1), padding = 'same', activation
 dropout_rgb = Dropout(0.2)(conv_model_rgb)
 
 # DECONVOLUTION Layers
-deconv_last = Conv2DTr
+deconv_last = Conv2DTranspose(num_class, (64,64), strides=(32, 32), padding='same', data_format="channels_last", activation='relu',kernel_initializer='glorot_normal') (dropout_rgb)
+
+#VECTORIZING OUTPUT
+out_reshape = Reshape((input_dim[0]*input_dim[1],num_class))(deconv_last)
+out = Activation('softmax')(out_reshape)
+
+# MODAL [INPUTS , OUTPUTS]
+model = Model(in
