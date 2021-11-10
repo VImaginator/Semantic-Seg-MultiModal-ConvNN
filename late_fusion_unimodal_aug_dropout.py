@@ -184,4 +184,4 @@ early = EarlyStopping(monitor='val_acc', min_delta=0, patience=1, verbose=1, mod
 board = TensorBoard(log_dir='./logs_training', histogram_freq=2, write_graph=True)
 
 
-model.fit_generator(train_generator,steps_per_epoch=100,epochs=75, callbacks=[progbar,checkpoint,board],validation_data = valid_gene
+model.fit_generator(train_generator,steps_per_epoch=100,epochs=75, callbacks=[progbar,checkpoint,board],validation_data = valid_generator, validation_steps = 2, max_q_size=4, pickle_safe = True)
