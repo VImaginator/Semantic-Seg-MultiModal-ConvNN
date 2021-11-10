@@ -180,4 +180,8 @@ model.summary()
 # Save the model according to the conditions  
 progbar = ProgbarLogger(count_mode='steps')
 checkpoint = ModelCheckpoint("late_fusion_unimodal_{epoch:02d}.hdf5", monitor='val_loss', verbose=1, save_best_only=False, save_weights_only=False, mode='auto', period=1)
-ear
+early = EarlyStopping(monitor='val_acc', min_delta=0, patience=1, verbose=1, mode='auto')
+board = TensorBoard(log_dir='./logs_training', histogram_freq=2, write_graph=True)
+
+
+model.fit_generator(train_generator,steps_per_epoch=100,epochs=75, callbacks=[progbar,checkpoint,board],validation_data = valid_gene
