@@ -64,3 +64,46 @@ def data_augmentor(x,state,row_axis=1,col_axis=0,channel_axis=-1):
     if temp[1]:
         y = random_rotation(y, state.rotation_range, row_axis, col_axis, channel_axis,fill_mode=state.fill_mode)
         y = np.swapaxes(y,0,1)
+        y = np.swapaxes(y,1,2)
+        
+    if temp[2]:
+        y = random_shift(y, state.width_range, state.height_range, row_axis, col_axis, channel_axis,fill_mode=state.fill_mode)
+        y= np.swapaxes(y,0,1)
+        y= np.swapaxes(y,1,2)
+        
+    if temp[3]:
+        y = random_shear(y, state.shear_intensity, row_axis, col_axis, channel_axis,fill_mode=state.fill_mode)
+        y = np.swapaxes(y,0,1)
+        y = np.swapaxes(y,1,2)
+        
+        
+    if temp[4]:
+        y = random_zoom(y, state.zoom_range, row_axis, col_axis, channel_axis,fill_mode=state.fill_mode)
+        y = np.swapaxes(y,0,1)
+        y = np.swapaxes(y,1,2)
+    d2 = datetime.now()
+    a = str(d2-d1)[2:].split(':')
+    t2 = float(a[0])*60+float(a[1])
+    print 'opencv: '+str(t1)
+    print 'keras : '+str(t2)
+    print 'diff  : '+str(t2-t1)
+    print 'improv: '+str((t1-t2)*100/t2)
+     
+    return x,y
+'''
+
+
+state_aug = aug_state() 
+
+im = cv2.imread('/home/captain_jack/Downloads/freiburg_forest_dataset/train/rgb/b137-492.jpg')
+
+cv2.imshow('window',im)
+while True:
+    if cv2.waitKey(0) & 0xFF == ord('q'):
+        cv2.destroyAllWindows()
+        break
+
+im_aug = data_augmentor(im,state_aug)
+
+
+
