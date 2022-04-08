@@ -14,4 +14,11 @@ for folder in train_dirs:
     image_paths = sorted(os.listdir(train_path+folder))
     for f in range(30):
         #print len(os.listdir('/home/captain_jack/Downloads/freiburg_forest_annotated/valid/'+folder))
-        shutil.mov
+        shutil.move(train_path+folder+'/'+image_paths[f], val_path+folder+'/'+image_paths[f])
+        
+for folder in test_dirs:
+    image_paths = sorted(os.listdir(test_path+folder))
+    for f in range(36):
+        shutil.move(test_path+folder+'/'+image_paths[f], val_path+folder+'/'+image_paths[f])
+
+
